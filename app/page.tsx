@@ -113,51 +113,51 @@ export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('overview');
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-purple-950 to-gray-950">
       {/* Header */}
       <motion.header 
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className="bg-black/20 backdrop-blur-xl border-b border-white/10"
+        className="sticky top-0 z-50 bg-black/40 backdrop-blur-2xl border-b border-white/10 shadow-2xl shadow-purple-500/10"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl">
-                <BarChart3 className="w-8 h-8 text-white" />
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl shadow-lg shadow-purple-500/50">
+                <BarChart3 className="w-10 h-10 text-white" />
               </div>
-              <div>
-                <h1 className="text-2xl font-bold text-white">AI Social Analytics</h1>
-                <p className="text-sm text-gray-400">Powered by Artificial Intelligence</p>
+              <div className="text-center sm:text-left">
+                <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">AI Social Analytics</h1>
+                <p className="text-sm text-gray-400 mt-1">Powered by Artificial Intelligence</p>
               </div>
             </div>
-            <button className="px-6 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all">
+            <button className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-semibold hover:shadow-xl hover:shadow-purple-500/50 hover:scale-105 transition-all">
               Conectar Contas
             </button>
           </div>
         </div>
       </motion.header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 hover:border-white/40 transition-all"
+              className="bg-white/5 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 hover:border-purple-500/50 hover:bg-white/10 transition-all duration-300 hover:scale-105 shadow-xl shadow-black/20"
             >
-              <div className="flex items-center justify-between mb-4">
-                <div className={`p-3 bg-gradient-to-br ${stat.color} rounded-xl`}>
-                  <stat.icon className="w-6 h-6 text-white" />
+              <div className="flex items-center justify-between mb-6">
+                <div className={`p-4 bg-gradient-to-br ${stat.color} rounded-2xl shadow-lg`}>
+                  <stat.icon className="w-7 h-7 text-white" />
                 </div>
-                <span className="text-green-400 text-sm font-semibold">{stat.change}</span>
+                <span className="text-green-400 text-sm font-bold px-3 py-1 bg-green-500/10 rounded-full">{stat.change}</span>
               </div>
               <div>
-                <p className="text-gray-400 text-sm mb-1">{stat.label}</p>
-                <p className="text-3xl font-bold text-white">{stat.value}</p>
+                <p className="text-gray-400 text-sm mb-2 uppercase tracking-wider">{stat.label}</p>
+                <p className="text-4xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">{stat.value}</p>
               </div>
             </motion.div>
           ))}
@@ -168,12 +168,15 @@ export default function Dashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="mb-8"
+          className="mb-12"
         >
-          <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-            <Brain className="w-6 h-6 text-purple-400" />
-            Insights com IA
-          </h2>
+          <div className="text-center mb-8">
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent mb-2 flex items-center justify-center gap-3">
+              <Brain className="w-10 h-10 text-purple-400" />
+              Insights com IA
+            </h2>
+            <p className="text-gray-400">Análise inteligente e automatizada dos seus dados</p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {aiInsights.map((insight, index) => (
               <motion.div
@@ -181,28 +184,28 @@ export default function Dashboard() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5 + index * 0.1 }}
-                className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 hover:scale-105 transition-all cursor-pointer"
+                className="bg-white/5 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 hover:border-purple-500/50 hover:scale-105 transition-all duration-300 cursor-pointer shadow-xl shadow-black/20 hover:shadow-purple-500/20"
               >
-                <div className={`p-3 bg-gradient-to-br ${insight.color} rounded-xl w-fit mb-4`}>
-                  <insight.icon className="w-6 h-6 text-white" />
+                <div className={`p-4 bg-gradient-to-br ${insight.color} rounded-2xl w-fit mb-6 shadow-lg`}>
+                  <insight.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-white font-semibold mb-2">{insight.title}</h3>
-                <p className="text-gray-400 text-sm">{insight.insight}</p>
+                <h3 className="text-white font-bold text-lg mb-3">{insight.title}</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">{insight.insight}</p>
               </motion.div>
             ))}
           </div>
         </motion.div>
 
         {/* Charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
           {/* Engagement Chart */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.8 }}
-            className="lg:col-span-2 bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20"
+            className="lg:col-span-2 bg-white/5 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 shadow-xl shadow-black/20"
           >
-            <h3 className="text-xl font-bold text-white mb-6">Engajamento por Plataforma</h3>
+            <h3 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-8">Engajamento por Plataforma</h3>
             <ResponsiveContainer width="100%" height={300}>
               <AreaChart data={engagementData}>
                 <defs>
@@ -242,9 +245,9 @@ export default function Dashboard() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.9 }}
-            className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20"
+            className="bg-white/5 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 shadow-xl shadow-black/20"
           >
-            <h3 className="text-xl font-bold text-white mb-6">Distribuição de Público</h3>
+            <h3 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-8">Distribuição de Público</h3>
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie
@@ -273,35 +276,44 @@ export default function Dashboard() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0 }}
         >
-          <h2 className="text-2xl font-bold text-white mb-4">Plataformas Conectadas</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-gradient-to-br from-green-500/20 to-green-600/20 backdrop-blur-xl rounded-2xl p-6 border border-green-500/30">
-              <Send className="w-12 h-12 text-green-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">WhatsApp</h3>
-              <p className="text-gray-300 mb-4">Bot de automação ativo</p>
+          <div className="text-center mb-8">
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">Plataformas Conectadas</h2>
+            <p className="text-gray-400">Gerencie todas as suas redes sociais em um só lugar</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-gradient-to-br from-green-500/10 to-green-600/10 backdrop-blur-2xl rounded-3xl p-8 border border-green-500/20 hover:border-green-500/50 transition-all duration-300 hover:scale-105 shadow-xl shadow-black/20 hover:shadow-green-500/20">
+              <div className="p-4 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl w-fit mb-6 shadow-lg shadow-green-500/50">
+                <Send className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-3">WhatsApp</h3>
+              <p className="text-gray-300 mb-6 text-sm">Bot de automação ativo</p>
               <div className="flex items-center justify-between">
-                <span className="text-2xl font-bold text-white">45.2K</span>
-                <span className="text-green-400 text-sm">+12%</span>
+                <span className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">45.2K</span>
+                <span className="text-green-400 text-sm font-bold px-3 py-1 bg-green-500/10 rounded-full">+12%</span>
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-pink-500/20 to-purple-600/20 backdrop-blur-xl rounded-2xl p-6 border border-pink-500/30">
-              <Instagram className="w-12 h-12 text-pink-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Instagram</h3>
-              <p className="text-gray-300 mb-4">API integrada</p>
+            <div className="bg-gradient-to-br from-pink-500/10 to-purple-600/10 backdrop-blur-2xl rounded-3xl p-8 border border-pink-500/20 hover:border-pink-500/50 transition-all duration-300 hover:scale-105 shadow-xl shadow-black/20 hover:shadow-pink-500/20">
+              <div className="p-4 bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl w-fit mb-6 shadow-lg shadow-pink-500/50">
+                <Instagram className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-3">Instagram</h3>
+              <p className="text-gray-300 mb-6 text-sm">API integrada</p>
               <div className="flex items-center justify-between">
-                <span className="text-2xl font-bold text-white">62.8K</span>
-                <span className="text-pink-400 text-sm">+18%</span>
+                <span className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">62.8K</span>
+                <span className="text-pink-400 text-sm font-bold px-3 py-1 bg-pink-500/10 rounded-full">+18%</span>
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-cyan-500/20 to-blue-600/20 backdrop-blur-xl rounded-2xl p-6 border border-cyan-500/30">
-              <Video className="w-12 h-12 text-cyan-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">TikTok</h3>
-              <p className="text-gray-300 mb-4">Analytics em tempo real</p>
+            <div className="bg-gradient-to-br from-cyan-500/10 to-blue-600/10 backdrop-blur-2xl rounded-3xl p-8 border border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300 hover:scale-105 shadow-xl shadow-black/20 hover:shadow-cyan-500/20">
+              <div className="p-4 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl w-fit mb-6 shadow-lg shadow-cyan-500/50">
+                <Video className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-3">TikTok</h3>
+              <p className="text-gray-300 mb-6 text-sm">Analytics em tempo real</p>
               <div className="flex items-center justify-between">
-                <span className="text-2xl font-bold text-white">19.5K</span>
-                <span className="text-cyan-400 text-sm">+34%</span>
+                <span className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">19.5K</span>
+                <span className="text-cyan-400 text-sm font-bold px-3 py-1 bg-cyan-500/10 rounded-full">+34%</span>
               </div>
             </div>
           </div>
@@ -309,18 +321,18 @@ export default function Dashboard() {
       </main>
 
       {/* Footer */}
-      <footer className="mt-16 py-8 border-t border-white/10">
+      <footer className="mt-20 py-12 border-t border-white/10 bg-black/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            <p className="text-gray-400">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-gray-400 text-center sm:text-left">
               Desenvolvido com ❤️ por{' '}
-              <a href="https://github.com/brunosillvax" className="text-purple-400 hover:text-purple-300">
+              <a href="https://github.com/brunosillvax" className="text-purple-400 hover:text-purple-300 font-semibold transition-colors">
                 Bruno Silva
               </a>
             </p>
             <div className="flex items-center gap-2 text-gray-400 text-sm">
-              <Sparkles className="w-4 h-4 text-purple-400" />
-              Powered by AI
+              <Sparkles className="w-5 h-5 text-purple-400 animate-pulse" />
+              <span className="font-semibold">Powered by AI</span>
             </div>
           </div>
         </div>
