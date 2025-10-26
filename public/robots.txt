@@ -1,0 +1,8 @@
+# AI Social Analytics - robots.txt
+# https://github.com/brunosillvax/ai-social-analytics
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://ai-social-analytics.vercel.app/sitemap.xml

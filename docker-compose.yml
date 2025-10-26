@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_OPENAI_API_KEY=${NEXT_PUBLIC_OPENAI_API_KEY}
+      - NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN=${NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN}
+      - NEXT_PUBLIC_INSTAGRAM_USER_ID=${NEXT_PUBLIC_INSTAGRAM_USER_ID}
+      - NEXT_PUBLIC_WHATSAPP_TOKEN=${NEXT_PUBLIC_WHATSAPP_TOKEN}
+      - NEXT_PUBLIC_WHATSAPP_PHONE_ID=${NEXT_PUBLIC_WHATSAPP_PHONE_ID}
+      - NEXT_PUBLIC_TIKTOK_ACCESS_TOKEN=${NEXT_PUBLIC_TIKTOK_ACCESS_TOKEN}
+      - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL}
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
