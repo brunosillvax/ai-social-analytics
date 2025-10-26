@@ -12,11 +12,13 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [20.x]
     
     steps:
     - name: 📥 Checkout code
       uses: actions/checkout@v4
+      with:
+        ref: ${{ github.ref }}
     
     - name: 🟢 Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
@@ -47,11 +49,13 @@ jobs:
     steps:
     - name: 📥 Checkout code
       uses: actions/checkout@v4
+      with:
+        ref: ${{ github.ref }}
     
     - name: 🟢 Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18.x'
+        node-version: '20.x'
         cache: 'npm'
     
     - name: 📦 Install dependencies
