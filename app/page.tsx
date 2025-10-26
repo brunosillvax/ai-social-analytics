@@ -1,3 +1,5 @@
+// AI Social Analytics Dashboard
+// Dashboard principal com métricas, gráficos e insights de IA
 'use client';
 
 import { motion } from 'framer-motion';
