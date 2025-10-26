@@ -17,12 +17,8 @@ import {
   Target
 } from 'lucide-react';
 import { 
-  LineChart, 
-  Line, 
   AreaChart, 
   Area, 
-  BarChart,
-  Bar,
   PieChart,
   Pie,
   Cell,
@@ -110,7 +106,6 @@ const stats = [
 ];
 
 export default function Dashboard() {
-  const [activeTab, setActiveTab] = useState('overview');
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-purple-950 to-gray-950">
@@ -255,7 +250,11 @@ export default function Dashboard() {
                   cx="50%"
                   cy="50%"
                   labelLine={false}
-                  label={(entry: any) => `${entry.name} ${entry.percent ? (entry.percent * 100).toFixed(0) : 0}%`}
+                  label={({ name, percent }) => {
+                    const displayName = name || '';
+                    const displayPercent = typeof percent === 'number' ? (percent * 100).toFixed(0) : 0;
+                    return `${displayName} ${displayPercent}%`;
+                  }}
                   outerRadius={100}
                   fill="#8884d8"
                   dataKey="value"
