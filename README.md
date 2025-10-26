@@ -11,7 +11,7 @@
 
 Monitore, analise e obtenha insights acionáveis das suas redes sociais em tempo real
 
-[Demo](https://ai-social-analytics.vercel.app) · [Reportar Bug](https://github.com/brunosillvax/ai-social-analytics/issues) · [Solicitar Feature](https://github.com/brunosillvax/ai-social-analytics/issues)
+[Demo ao Vivo](https://ai-social-analytics.vercel.app) · [Reportar Bug](https://github.com/brunosillvax/ai-social-analytics/issues) · [Solicitar Feature](https://github.com/brunosillvax/ai-social-analytics/issues)
 
 </div>
 
